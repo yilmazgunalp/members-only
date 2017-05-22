@@ -1,0 +1,28 @@
+<% provide(:title, @user.name) %>
+
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<p><%=@user.name %></p>
+
+
+<ul>
+
+<%= session.each do |k,v| %>
+
+<li> <p><%=k %></p><p><%=v %></p></li>
+
+	
+<% end %>
+</ul>
+
+<p>.................</p>
+<ul>
+
+<%= cookies.each do |k,v| %>
+
+<li> <p><%=k %></p><p><%=v %></p></li>
+
+	
+<% end %>
+</ul>

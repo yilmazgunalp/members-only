@@ -1,0 +1,22 @@
+
+
+
+	
+
+<% @posts.each do |p|  %>
+<div class="posts">
+<% if @current_user %>
+
+<li> <span>Author:</span>	<%= User.find(p.user_id).name%></li>	
+<% end %>
+<h5>Title:</h5>
+<li><%=p.title %></li>
+<h6>Post:</h6>
+<li><%=p.content %></li>
+
+</div>
+
+<% end %>
+
+
+<p><%= pluralize(@posts.size, "Post")%></p>

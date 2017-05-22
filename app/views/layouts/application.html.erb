@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MembersOnly</title>
+    <title><%=  yield(:title) %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,27 @@
   </head>
 
   <body>
+<% if !flash.empty? %>
+  <% flash.each do |k,m| %>
+
+   <%= content_tag(:div, m, class: "alert alert-#{k}") %>
+  <%end %>
+<% end %>
+  
+  <% if cookies[:remember_token] %>
+    <%=link_to "Sign Out", signout_path, method: :delete %>
+    <% else %>
+    <%=link_to "Sign In", login_path  %>
+  <% end %>
     <%= yield %>
+<%=link_to "Create a Post", new_post_path  %>
+<%=link_to "Posts", posts_path %>
+
+<br><br>
+<footer>
+
+<%=link_to "Home", root_url %>
+</footer>
+
   </body>
 </html>
